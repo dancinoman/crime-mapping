@@ -20,7 +20,7 @@ S3_BUCKET_NAME = 'crime-porverty-heatmap-data-analysis'
 S3_INPUT_JSON = 'url-links-poverty/urls-poverty.json'
 S3_OUTPUT_LOCAL_JSON = 'data/poverty/urls-poverty.json'
 S3_OUTPUT_BUCKET_KEY = 'data/poverty/xlsx-files'
-S3_FILE_LOCAL_TMP = "downloads"
+S3_FILE_LOCAL_TMP = "downloads/xlsx-files"
 
 def get_urls():
     s3.download_file(S3_BUCKET_NAME, S3_INPUT_JSON, S3_OUTPUT_LOCAL_JSON)
