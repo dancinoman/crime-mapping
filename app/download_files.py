@@ -19,7 +19,7 @@ s3 = boto3.client('s3')
 S3_BUCKET_NAME = 'crime-porverty-heatmap-data-analysis'
 S3_INPUT_JSON = 'url-links-poverty/urls-poverty.json'
 S3_OUTPUT_LOCAL_JSON = 'data/poverty/urls-poverty.json'
-S3_OUTPUT_BUCKET_KEY = 'data/poverty'
+S3_OUTPUT_BUCKET_KEY = 'data/poverty/xlsx-files'
 S3_FILE_LOCAL_TMP = "downloads"
 
 def get_urls():
@@ -119,14 +119,14 @@ def download_file_from_url(name, url):
             break
         time.sleep(1)
 
-    # ======== Clean up temporary Chrome files ========
-    for f in os.listdir(download_path):
-        if f.startswith(".com.google.Chrome.") or f.endswith(".crdownload"):
-            try:
-                os.remove(os.path.join(download_path, f))
+    """   # ======== Clean up temporary Chrome files ========
+        for f in os.listdir(download_path):
+            if f.startswith(".com.google.Chrome.") or f.endswith(".crdownload"):
+                try:
+                    os.remove(os.path.join(download_path, f))
 
-            except OSError as e:
-                print(f"Error cleaning up {f}: {e}")
+                except OSError as e:
+                    print(f"Error cleaning up {f}: {e}")"""
 
 
     driver.quit()
@@ -143,20 +143,8 @@ def download_file_from_url(name, url):
             print(f"File uploaded to S3: s3://{S3_BUCKET_NAME}/{s3_key}")
 
             # Delete temporary file after download
-            shutil.rmtree(download_path)
+            # shutil.rmtree(download_path)
         except FileNotFoundError:
             print("The file was not found")
         except NoCredentialsError:
             print("Credentials not available")
-
-if __name__ == "__main__":
-
-    urls = get_urls()
-
-    for url in urls:
-
-        name = url.get("neighbourhood")
-        url = url.get("url")
-
-        print("Begin downloading file for neighbourhood:", name)
-        download_file_from_url(name, url)
