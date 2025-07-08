@@ -33,8 +33,10 @@ def get_urls():
 
 def download_file_from_url(name, url):
     # === Chrome Setup for Headless Downloads ===
+    # Fix the path to the script directory and project root
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    download_path = os.path.join(script_dir, S3_FILE_LOCAL_TMP)
+    project_root = os.path.dirname(script_dir)
+    download_path = os.path.join(project_root, S3_FILE_LOCAL_TMP)
     os.makedirs(download_path, exist_ok=True)
 
     # === Chrome Setup for Headless Downloads ===
@@ -133,13 +135,17 @@ def download_file_from_url(name, url):
 
     if downloaded_file:
         new_file_name = f"poverty_family_structure_{name}.xlsx"
+
         local_file_path = os.path.join(download_path, downloaded_file)
+        renamed_file_path = os.path.join(download_path, new_file_name)
+        # Rename the downloaded file
+        os.rename(local_file_path, renamed_file_path)
         s3_key = os.path.join(S3_OUTPUT_BUCKET_KEY, new_file_name)
 
         s3 = boto3.client('s3')
 
         try:
-            s3.upload_file(local_file_path, S3_BUCKET_NAME, s3_key)
+            s3.upload_file(renamed_file_path, S3_BUCKET_NAME, s3_key)
             print(f"File uploaded to S3: s3://{S3_BUCKET_NAME}/{s3_key}")
 
             # Delete temporary file after download
