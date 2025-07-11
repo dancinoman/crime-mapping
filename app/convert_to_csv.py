@@ -35,18 +35,20 @@ def execute_csv_creation():
     # Process each file in the source directory
     for i,filename in enumerate(os.listdir(download_path_source)):
 
-        neighbour = re.search(r"_([^_.]+)\.[^.]+$", filename).group(1)
-
         # Extract duplicate columns
         with open(os.path.join(download_path_source, filename), 'rb') as file:
             df = pd.read_excel(file, engine='openpyxl')
 
             df_fixed = fix_values_shifted(df, 5)
             df_fixed = remove_quotes(df_fixed)
-            df_pivoted = pivot(df_fixed)
 
-            # Process only the first file
+            #Filter the DataFrame with first file and filter the relevant columns for the others
             if i == 0:
-                df_pivoted[:-2].to_csv(os.path.join(download_path_destination, "poverty_family_structure_city.csv"), index=False)
+                df_filtered = df_fixed.iloc[:, :-2]
+                neighbour = "city"
+            else:
+                df_filtered = df_fixed.iloc[:, [0, -2, -1]]
+                neighbour = re.search(r"_([^_.]+)\.[^.]+$", filename).group(1)
 
-            df_pivoted[-2:].to_csv(os.path.join(download_path_destination, f"poverty_family_structure_{neighbour}.csv"), index=False)
+            df_pivoted = pivot(df_filtered)
+            df_pivoted.to_csv(os.path.join(download_path_destination, f"poverty_family_structure_{neighbour}.csv"), index=False)
