@@ -65,8 +65,6 @@ def convert_xlsx_to_csv():
 
 def convert_json():
 
-    TO_IGNORE_SAME_ID = ["SANS NOM"]
-
     """Convert Json to stackable data."""
     path = Path("downloads", "json-files", "json-files")
     path_source = path.get_source_path()
@@ -77,35 +75,22 @@ def convert_json():
     with open(path_source + file_name_source, 'r') as file:
         data = json.load(file)
 
-    def get_same_id(features):
-        """Get the same id for the features."""
-
-        for stackable in stakable_data:
-            if features.get('properties') and \
-                features['properties']['ARROND'] == stackable['name'] and \
-                features['properties']['ARROND'] not in TO_IGNORE_SAME_ID:
-
-                return stackable['id']
-
-        return None
 
     stakable_data = []
+    id = 1
+
     for features in data['features']:
 
-        if features.get('properties'):
-            if (neighbour_id := get_same_id(features)) is None:
-                neighbour_id = features['properties']['OBJECTID']
+        stakable_data.append({
+            "id": features['properties']['OBJECTID'],
+            "neighbour_id": id,
+            "name": features['properties']['ARROND'],
+            "type": features['type'],
+            "geometry": features['geometry']['type'],
+            "coordinates": features['geometry']['coordinates']
+        })
 
-            stakable_data.append({
-                "id": features['properties']['OBJECTID'],
-                "neighbour_id": neighbour_id,
-                "name": features['properties']['ARROND'],
-                "type": features['type'],
-                "geometry": features['geometry']['type'],
-                "coordinates": features['geometry']['coordinates']
-            })
-
-    print(stakable_data)
+        id += 1
 
     with open(path_destination + file_name_destination, 'w') as file:
         for obj in stakable_data:
