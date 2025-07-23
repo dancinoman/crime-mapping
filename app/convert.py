@@ -105,8 +105,6 @@ def convert_json():
                 "coordinates": features['geometry']['coordinates']
             })
 
-    print(stakable_data)
-
     with open(path_destination + file_name_destination, 'w') as file:
         for obj in stakable_data:
             json.dump(obj, file)
