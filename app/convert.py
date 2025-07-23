@@ -8,7 +8,7 @@ from config import Path
 
 
 
-def convert_xlsx_to_csv():
+def convert_poverty_files():
 
     path = Path("downloads", "xlsx-files", "csv-files")
     path_source = path.get_source_path()
@@ -63,9 +63,21 @@ def convert_xlsx_to_csv():
     # Execute the conversion process
     execute_poverty_creation()
 
-def convert_json():
+def convert_geojson():
 
     TO_IGNORE_SAME_ID = ["SANS NOM"]
+
+    MATCH_AREA_NAME_DICT = {
+        'SAINT-PAUL': 'Le Sud-Ouest',
+        'VILLERAY': 'Villeray–Saint-Michel–Parc-Extension',
+        'ROXBORO' : 'Pierrefonds-Roxboro',
+        "L'ÎLE-BIZARD": "L'Île-Bizard–Sainte-Geneviève",
+        'ROSEMONT': 'Rosemont–La Petite-Patrie',
+        'POINTE-AUX-TREMBLES': 'Rivière-des-Prairies–Pointe-aux-Trembles',
+        'RIVIÈRE-DES-PRAIRIES': 'Rivière-des-Prairies–Pointe-aux-Trembles',
+        'HOCHELAGA': 'Hochelaga-Maisonneuve',
+        'NOTRE-DAME-DE-GRÂCE': 'Côte-des-Neiges-Notre-Dame-de-Grâce'
+        }
 
     """Convert Json to stackable data."""
     path = Path("downloads", "json-files", "json-files")
@@ -93,12 +105,20 @@ def convert_json():
     for features in data['features']:
 
         if features.get('properties'):
+            # put coherent id for areas
             if (neighbour_id := get_same_id(features)) is None:
                 neighbour_id = features['properties']['OBJECTID']
+
+            # Add tags for matching names
+            if features['properties']['ARROND'] in MATCH_AREA_NAME_DICT:
+                poverty_tag = MATCH_AREA_NAME_DICT[features['properties']['ARROND']]
+            else:
+                poverty_tag = features['properties']['ARROND']
 
             stakable_data.append({
                 "id": features['properties']['OBJECTID'],
                 "neighbour_id": neighbour_id,
+                "poverty_tag": poverty_tag,
                 "name": features['properties']['ARROND'],
                 "type": features['type'],
                 "geometry": features['geometry']['type'],
