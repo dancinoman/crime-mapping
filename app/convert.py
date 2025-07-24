@@ -69,13 +69,13 @@ def convert_geojson():
 
     MATCH_AREA_NAME_DICT = {
         'SAINT-PAUL': 'Le Sud-Ouest',
-        'VILLERAY': 'Villeray–Saint-Michel–Parc-Extension',
+        'VILLERAY': 'Villeray-Saint-Michel-Parc-Extension',
         'ROXBORO' : 'Pierrefonds-Roxboro',
-        "L'ÎLE-BIZARD": "L'Île-Bizard–Sainte-Geneviève",
-        'ROSEMONT': 'Rosemont–La Petite-Patrie',
-        'POINTE-AUX-TREMBLES': 'Rivière-des-Prairies–Pointe-aux-Trembles',
-        'RIVIÈRE-DES-PRAIRIES': 'Rivière-des-Prairies–Pointe-aux-Trembles',
-        'HOCHELAGA': 'Hochelaga-Maisonneuve',
+        "L'ÎLE-BIZARD": "L'Île-Bizard-Sainte-Geneviève",
+        'ROSEMONT': 'Rosemont-La Petite-Patrie',
+        'POINTE-AUX-TREMBLES': 'Rivière-des-Prairies-Pointe-aux-Trembles',
+        'RIVIÈRE-DES-PRAIRIES': 'Rivière-des-Prairies-Pointe-aux-Trembles',
+        'HOCHELAGA': 'Mercier-Hochelaga-Maisonneuve',
         'NOTRE-DAME-DE-GRÂCE': 'Côte-des-Neiges-Notre-Dame-de-Grâce'
         }
 
