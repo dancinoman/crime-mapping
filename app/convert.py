@@ -63,6 +63,7 @@ def convert_poverty_files():
     # Execute the conversion process
     execute_poverty_creation()
 
+"""
 def convert_geojson():
 
     TO_IGNORE_SAME_ID = ["SANS NOM"]
@@ -79,7 +80,6 @@ def convert_geojson():
         'NOTRE-DAME-DE-GRÂCE': 'Côte-des-Neiges-Notre-Dame-de-Grâce'
         }
 
-    """Convert Json to stackable data."""
     path = Path("downloads", "json-files", "json-files")
     path_source = path.get_source_path()
     path_destination = path.get_destination_path()
@@ -90,7 +90,7 @@ def convert_geojson():
         data = json.load(file)
 
     def get_same_id(features):
-        """Get the same id for the features."""
+
 
         for stackable in stakable_data:
             if features.get('properties') and \
@@ -129,3 +129,4 @@ def convert_geojson():
         for obj in stakable_data:
             json.dump(obj, file)
             file.write("\n")
+"""

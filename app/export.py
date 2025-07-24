@@ -18,8 +18,9 @@ def upload_csv_to_s3():
             print(f"File {filename} uploaded to S3 bucket {S3_BUCKET_NAME} at {S3_OUTPUT_BUCKET_KEY}.")
         except Exception as e:
             print(f"Error uploading file {filename} to S3: {e}")
-
+"""
 def upload_json_to_s3():
     S3_INPUT_FILE = 'downloads/json-files/polygon_map_translate.json'
     S3_OUTPUT_BUCKET_KEY = "data/municipality_polygon/polygon_map_translate.json"
     s3.upload_file(S3_INPUT_FILE, S3_BUCKET_NAME, S3_OUTPUT_BUCKET_KEY)
+"""
