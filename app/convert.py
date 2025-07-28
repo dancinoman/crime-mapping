@@ -52,7 +52,7 @@ def convert_poverty_files():
                 #Filter the DataFrame with first file and filter the relevant columns for the others
                 if i == 0:
                     df_filtered = df_fixed.iloc[:, :-2]
-                    neighbour = "zcity"
+                    neighbour = "city"
                 else:
                     df_filtered = df_fixed.iloc[:, [0, -2, -1]]
                     neighbour = re.search(r"_([^_.]+)\.[^.]+$", filename).group(1)
