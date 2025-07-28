@@ -39,6 +39,8 @@ def convert_poverty_files():
     def execute_poverty_creation():
         """Execute the conversion of Excel files to CSV format."""
 
+        extract_duplicate_columns = True
+
         # Process each file in the source directory
         for i,filename in enumerate(os.listdir(path_source)):
 
@@ -50,12 +52,15 @@ def convert_poverty_files():
                 df_fixed = remove_quotes(df_fixed)
 
                 #Filter the DataFrame with first file and filter the relevant columns for the others
-                if i == 0:
+                if extract_duplicate_columns:
                     df_filtered = df_fixed.iloc[:, :-2]
                     neighbour = "city"
-                else:
-                    df_filtered = df_fixed.iloc[:, [0, -2, -1]]
-                    neighbour = re.search(r"_([^_.]+)\.[^.]+$", filename).group(1)
+                    df_pivoted = pivot(df_filtered)
+                    df_pivoted.to_csv(os.path.join(path_destination, f"poverty_family_structure_{neighbour}.csv"), index=False)
+                    extract_duplicate_columns = False
+
+                df_filtered = df_fixed.iloc[:, [0, -2, -1]]
+                neighbour = re.search(r"_([^_.]+)\.[^.]+$", filename).group(1)
 
                 df_pivoted = pivot(df_filtered)
                 df_pivoted.to_csv(os.path.join(path_destination, f"poverty_family_structure_{neighbour}.csv"), index=False)
