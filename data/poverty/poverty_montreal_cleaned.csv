@@ -1,0 +1,43 @@
+district_id,district_name,amount_1tutor,amount_2tutor,amount_single,abp_20753,abp_29349,abp_41506,abs_39099,abs_61009
+5,Nombre_Outremont,350.00,35.00,3020.00,400.00,0.00,0.00,0.00,25.00
+5,Pourcentage_Outremont,100.00,100.00,100.00,13.20,0.00,0.00,0.00,7.10
+23,Nombre_Ahuntsic-Cartierville,2395.00,545.00,25525.00,4560.00,145.00,175.00,275.00,375.00
+23,Pourcentage_Ahuntsic-Cartierville,100.00,100.00,100.00,17.90,26.60,7.30,50.50,15.70
+14,Nombre_Saint-Léonard,1530.00,280.00,9890.00,1595.00,65.00,140.00,150.00,265.00
+14,Pourcentage_Saint-Léonard,100.00,100.00,100.00,16.10,23.20,9.20,53.60,17.30
+,Nombre_Agglomération de Montréal,30795.00,7080.00,367260.00,70255.00,1805.00,2160.00,3740.00,4705.00
+,Nombre_Ville de Montréal,27015.00,6640.00,341245.00,66700.00,1720.00,2005.00,3505.00,4340.00
+,Pourcentage_Agglomération de Montréal,100.00,100.00,100.00,19.10,25.50,7.00,52.80,15.30
+,Pourcentage_Ville de Montréal,100.00,100.00,100.00,19.50,25.90,7.40,52.80,16.10
+24,Nombre_Rosemont-La Petite-Patrie,2370.00,485.00,37550.00,6665.00,135.00,75.00,195.00,115.00
+24,Pourcentage_Rosemont-La Petite-Patrie,100.00,100.00,100.00,17.70,27.80,3.20,40.20,4.90
+31,Nombre_Pierrefonds-Roxboro,1230.00,170.00,6505.00,825.00,30.00,75.00,75.00,180.00
+31,Pourcentage_Pierrefonds-Roxboro,100.00,100.00,100.00,12.70,17.60,6.10,44.10,14.60
+32,Nombre_L'Île-Bizard-Sainte-Geneviève,325.00,40.00,0.00,0.00,0.00,0.00,0.00,0.00
+32,Pourcentage_L'Île-Bizard-Sainte-Geneviève,100.00,100.00,100.00,0.00,0.00,0.00,0.00,0.00
+15,Nombre_Saint-Laurent,1990.00,260.00,11505.00,1915.00,45.00,145.00,90.00,300.00
+15,Pourcentage_Saint-Laurent,100.00,100.00,100.00,16.60,17.30,7.30,34.60,15.10
+19,Nombre_Ville-Marie,865.00,270.00,33795.00,9270.00,85.00,140.00,105.00,160.00
+19,Pourcentage_Ville-Marie,100.00,100.00,100.00,27.40,31.50,16.20,38.90,18.50
+17,Nombre_LaSalle,1295.00,390.00,13165.00,2240.00,80.00,95.00,195.00,250.00
+17,Pourcentage_LaSalle,100.00,100.00,100.00,17.00,20.50,7.30,50.00,19.30
+9,Nombre_Anjou,740.00,165.00,7010.00,930.00,30.00,55.00,50.00,70.00
+9,Pourcentage_Anjou,100.00,100.00,100.00,13.30,18.20,7.40,30.30,9.50
+27,Nombre_Lachine,715.00,235.00,8455.00,1485.00,65.00,40.00,100.00,65.00
+27,Pourcentage_Lachine,100.00,100.00,100.00,17.60,27.70,5.60,42.60,9.10
+25,Nombre_Villeray-Saint-Michel-Parc-Extension,2360.00,590.00,26930.00,5915.00,170.00,305.00,310.00,605.00
+25,Pourcentage_Villeray-Saint-Michel-Parc-Extension,100.00,100.00,100.00,22.00,28.80,12.90,52.50,25.60
+12,Nombre_Verdun,1160.00,265.00,14975.00,2240.00,80.00,75.00,120.00,50.00
+12,Pourcentage_Verdun,100.00,100.00,100.00,15.00,30.20,6.50,45.30,4.30
+33,Nombre_Rivière-des-Prairies-Pointe-aux-Trembles,1580.00,455.00,13305.00,1765.00,70.00,45.00,165.00,40.00
+33,Pourcentage_Rivière-des-Prairies-Pointe-aux-Trembles,100.00,100.00,100.00,13.30,15.40,2.80,36.30,2.50
+21,Nombre_Le Plateau-Mont-Royal,1260.00,225.00,30040.00,6975.00,70.00,60.00,40.00,50.00
+21,Pourcentage_Le Plateau-Mont-Royal,100.00,100.00,100.00,23.20,31.10,4.80,17.80,4.00
+16,Nombre_Montréal-Nord,1425.00,675.00,13325.00,2655.00,195.00,210.00,395.00,415.00
+16,Pourcentage_Montréal-Nord,100.00,100.00,100.00,19.90,28.90,14.70,58.50,29.10
+34,Nombre_Côte-des-Neiges-Notre-Dame-de-Grâce,2465.00,600.00,32495.00,7925.00,215.00,210.00,385.00,445.00
+34,Pourcentage_Côte-des-Neiges-Notre-Dame-de-Grâce,100.00,100.00,100.00,24.40,35.80,8.50,64.20,18.10
+20,Nombre_Le Sud-Ouest,955.00,340.00,20600.00,3700.00,110.00,75.00,210.00,50.00
+20,Pourcentage_Le Sud-Ouest,100.00,100.00,100.00,18.00,32.40,7.90,61.80,5.20
+22,Nombre_Mercier-Hochelaga-Maisonneuve,2005.00,610.00,31385.00,5330.00,135.00,85.00,250.00,170.00
+22,Pourcentage_Mercier-Hochelaga-Maisonneuve,100.00,100.00,100.00,17.00,22.10,4.20,41.00,8.50
