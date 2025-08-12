@@ -87,6 +87,9 @@ def associate_points_with_districts():
     joined_data = gpd.sjoin(points_gdf, district_gdf, how="inner", predicate="within")
     crime_districts = joined_data.drop(["geometry"], axis=1)
 
+    # Remove null values in the 'nom_arr' column
+    crime_districts = crime_districts.dropna(subset=["nom_arr"])
+
     # Save the result to a new CSV file
     path_destination = path_source1.get_destination_path() + "/crime_montreal_with_districts.csv"
     pd.DataFrame(crime_districts).to_csv(path_destination, index=False)
