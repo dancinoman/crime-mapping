@@ -1,0 +1,92 @@
+neighbour_id,neighbour_name,district_id,district_name,municipality_name,nom_arr,centroid_longitude,centroid_latitude
+53,Rivière-des-Prairies,33.0,Rivière-des-Prairies–Pointe-aux-Trembles,Montréal,Rivière-des-Prairies–Pointe-aux-Trembles,-73.54350202790988,45.66357948386908
+24,Beaurivage,22.0,Mercier–Hochelaga-Maisonneuve,Montréal,Mercier–Hochelaga-Maisonneuve,-73.51300971980858,45.596041911618876
+23,Tétreaultville,22.0,Mercier–Hochelaga-Maisonneuve,Montréal,Mercier–Hochelaga-Maisonneuve,-73.51300971980858,45.596041911618876
+22,Dupéré,22.0,Mercier–Hochelaga-Maisonneuve,Montréal,Mercier–Hochelaga-Maisonneuve,-73.51300971980858,45.596041911618876
+25,Guybourg,22.0,Mercier–Hochelaga-Maisonneuve,Montréal,Mercier–Hochelaga-Maisonneuve,-73.51300971980858,45.596041911618876
+26,Longue-Pointe,22.0,Mercier–Hochelaga-Maisonneuve,Montréal,Mercier–Hochelaga-Maisonneuve,-73.51300971980858,45.596041911618876
+21,Louis-Riel,22.0,Mercier–Hochelaga-Maisonneuve,Montréal,Mercier–Hochelaga-Maisonneuve,-73.51300971980858,45.596041911618876
+20,Marie-Victorin,24.0,Rosemont–La Petite-Patrie,Montréal,Rosemont–La Petite-Patrie,-73.56721381052334,45.56892828445509
+28,Maisonneuve,22.0,Mercier–Hochelaga-Maisonneuve,Montréal,Mercier–Hochelaga-Maisonneuve,-73.51300971980858,45.596041911618876
+08,René-Goupil,25.0,Villeray–Saint-Michel–Parc-Extension,Montréal,Villeray–Saint-Michel–Parc-Extension,-73.61485200145209,45.578545254421925
+07,Sainte-Lucie,25.0,Villeray–Saint-Michel–Parc-Extension,Montréal,Villeray–Saint-Michel–Parc-Extension,-73.61485200145209,45.578545254421925
+04,Sault-au-Récollet,23.0,Ahuntsic-Cartierville,Montréal,Ahuntsic-Cartierville,-73.66037334282547,45.55814109958097
+05,Saint-Sulpice,23.0,Ahuntsic-Cartierville,Montréal,Ahuntsic-Cartierville,-73.66037334282547,45.55814109958097
+03,Nicolas-Viel,23.0,Ahuntsic-Cartierville,Montréal,Ahuntsic-Cartierville,-73.66037334282547,45.55814109958097
+10,François-Perrault,25.0,Villeray–Saint-Michel–Parc-Extension,Montréal,Villeray–Saint-Michel–Parc-Extension,-73.61485200145209,45.578545254421925
+43,Savane,34.0,Côte-des-Neiges–Notre-Dame-de-Grâce,Montréal,Côte-des-Neiges–Notre-Dame-de-Grâce,-73.65122585813052,45.493698743847226
+40,Snowdon,34.0,Côte-des-Neiges–Notre-Dame-de-Grâce,Montréal,Côte-des-Neiges–Notre-Dame-de-Grâce,-73.65122585813052,45.493698743847226
+46,Côte-Saint-Antoine,34.0,Côte-des-Neiges–Notre-Dame-de-Grâce,Montréal,Côte-des-Neiges–Notre-Dame-de-Grâce,-73.65122585813052,45.493698743847226
+49,Ville-Émard,20.0,Le Sud-Ouest,Montréal,Le Sud-Ouest,-73.6014951256969,45.44979089163696
+50,Saint-Henri,20.0,Le Sud-Ouest,Montréal,Le Sud-Ouest,-73.6014951256969,45.44979089163696
+48,Côte-Saint-Paul,20.0,Le Sud-Ouest,Montréal,Le Sud-Ouest,-73.6014951256969,45.44979089163696
+47,Pointe-Saint-Charles,20.0,Le Sud-Ouest,Montréal,Le Sud-Ouest,-73.6014951256969,45.44979089163696
+51,Petite-Bourgogne,20.0,Le Sud-Ouest,Montréal,Le Sud-Ouest,-73.6014951256969,45.44979089163696
+39,Montagne,19.0,Ville-Marie,Montréal,Ville-Marie,-73.58757073685098,45.50120665985256
+38,René-Lévesque,19.0,Ville-Marie,Montréal,Ville-Marie,-73.58757073685098,45.50120665985256
+41,Édouard-Montpetit,34.0,Côte-des-Neiges–Notre-Dame-de-Grâce,Montréal,Côte-des-Neiges–Notre-Dame-de-Grâce,-73.65122585813052,45.493698743847226
+42,Parc-Kent,34.0,Côte-des-Neiges–Notre-Dame-de-Grâce,Montréal,Côte-des-Neiges–Notre-Dame-de-Grâce,-73.65122585813052,45.493698743847226
+27,Hochelaga,22.0,Mercier–Hochelaga-Maisonneuve,Montréal,Mercier–Hochelaga-Maisonneuve,-73.51300971980858,45.596041911618876
+30,Sainte-Marie,19.0,Ville-Marie,Montréal,Ville-Marie,-73.58757073685098,45.50120665985256
+29,Préfontaine,22.0,Mercier–Hochelaga-Maisonneuve,Montréal,Mercier–Hochelaga-Maisonneuve,-73.51300971980858,45.596041911618876
+19,Petite-Côte,24.0,Rosemont–La Petite-Patrie,Montréal,Rosemont–La Petite-Patrie,-73.56721381052334,45.56892828445509
+18,Vieux-Rosemont,24.0,Rosemont–La Petite-Patrie,Montréal,Rosemont–La Petite-Patrie,-73.56721381052334,45.56892828445509
+17,Étienne Desmarteaux,24.0,Rosemont–La Petite-Patrie,Montréal,Rosemont–La Petite-Patrie,-73.56721381052334,45.56892828445509
+16,Louis-Hébert,24.0,Rosemont–La Petite-Patrie,Montréal,Rosemont–La Petite-Patrie,-73.56721381052334,45.56892828445509
+31,Lorimier,21.0,Le Plateau-Mont-Royal,Montréal,Le Plateau-Mont-Royal,-73.57115042232812,45.536439001403274
+35,Saint-Louis,21.0,Le Plateau-Mont-Royal,Montréal,Le Plateau-Mont-Royal,-73.57115042232812,45.536439001403274
+32,Parc-Lafontaine,21.0,Le Plateau-Mont-Royal,Montréal,Le Plateau-Mont-Royal,-73.57115042232812,45.536439001403274
+33,Parc-Laurier,21.0,Le Plateau-Mont-Royal,Montréal,Le Plateau-Mont-Royal,-73.57115042232812,45.536439001403274
+34,Mile End,21.0,Le Plateau-Mont-Royal,Montréal,Le Plateau-Mont-Royal,-73.57115042232812,45.536439001403274
+09,Gabriel-Sagard,25.0,Villeray–Saint-Michel–Parc-Extension,Montréal,Villeray–Saint-Michel–Parc-Extension,-73.61485200145209,45.578545254421925
+11,Parc-Extension,25.0,Villeray–Saint-Michel–Parc-Extension,Montréal,Villeray–Saint-Michel–Parc-Extension,-73.61485200145209,45.578545254421925
+14,Saint-Édouard,24.0,Rosemont–La Petite-Patrie,Montréal,Rosemont–La Petite-Patrie,-73.56721381052334,45.56892828445509
+12,Parc-Jarry,25.0,Villeray–Saint-Michel–Parc-Extension,Montréal,Villeray–Saint-Michel–Parc-Extension,-73.61485200145209,45.578545254421925
+13,Crémazie,25.0,Villeray–Saint-Michel–Parc-Extension,Montréal,Villeray–Saint-Michel–Parc-Extension,-73.61485200145209,45.578545254421925
+15,Père-Marquette,24.0,Rosemont–La Petite-Patrie,Montréal,Rosemont–La Petite-Patrie,-73.56721381052334,45.56892828445509
+54,Pointe-aux-Trembles,33.0,Rivière-des-Prairies–Pointe-aux-Trembles,Montréal,Rivière-des-Prairies–Pointe-aux-Trembles,-73.54350202790988,45.66357948386908
+52,Marc-Aurèle-Fortin,33.0,Rivière-des-Prairies–Pointe-aux-Trembles,Montréal,Rivière-des-Prairies–Pointe-aux-Trembles,-73.54350202790988,45.66357948386908
+37,Vieux-Montréal,19.0,Ville-Marie,Montréal,Ville-Marie,-73.58757073685098,45.50120665985256
+45,Loyola,34.0,Côte-des-Neiges–Notre-Dame-de-Grâce,Montréal,Côte-des-Neiges–Notre-Dame-de-Grâce,-73.65122585813052,45.493698743847226
+44,Upper Lachine,34.0,Côte-des-Neiges–Notre-Dame-de-Grâce,Montréal,Côte-des-Neiges–Notre-Dame-de-Grâce,-73.65122585813052,45.493698743847226
+06,La Visitation,23.0,Ahuntsic-Cartierville,Montréal,Ahuntsic-Cartierville,-73.66037334282547,45.55814109958097
+02,Nouveau-Bordeaux,23.0,Ahuntsic-Cartierville,Montréal,Ahuntsic-Cartierville,-73.66037334282547,45.55814109958097
+01,Cartierville,23.0,Ahuntsic-Cartierville,Montréal,Ahuntsic-Cartierville,-73.66037334282547,45.55814109958097
+73,Anjou,9.0,Anjou,Montréal,Anjou,-73.56537744786021,45.61250198432818
+74,Outremont,5.0,Outremont,Montréal,Outremont,-73.60864555304398,45.515640730436985
+55,Chameran/Montpellier,15.0,Saint-Laurent,Montréal,Saint-Laurent,-73.67360824912977,45.523472048672296
+56,Grenet,15.0,Saint-Laurent,Montréal,Saint-Laurent,-73.67360824912977,45.523472048672296
+57,Dutrisac,15.0,Saint-Laurent,Montréal,Saint-Laurent,-73.67360824912977,45.523472048672296
+58,Bois-Francs,15.0,Saint-Laurent,Montréal,Saint-Laurent,-73.67360824912977,45.523472048672296
+61,Est,16.0,Montréal-Nord,Montréal,Montréal-Nord,-73.61800594607203,45.61606712199108
+60C,Centre,16.0,Montréal-Nord,Montréal,Montréal-Nord,-73.61800594607203,45.61606712199108
+63,Grande-Prairie,14.0,Saint-Léonard,Montréal,Saint-Léonard,-73.58925887947817,45.59523717310133
+62,Port-Maurice,14.0,Saint-Léonard,Montréal,Saint-Léonard,-73.58925887947817,45.59523717310133
+66,Desmarchais-Crawford,12.0,Verdun,Montréal,Verdun,-73.58163225067919,45.44554104857166
+64,Verdun-Centre,12.0,Verdun,Montréal,Verdun,-73.58163225067919,45.44554104857166
+65,Ile-des-Soeurs,12.0,Verdun,Montréal,Verdun,-73.58163225067919,45.44554104857166
+68,Sault-Saint-Louis,17.0,LaSalle,Montréal,LaSalle,-73.61379655733215,45.4270096454564
+67,Cecil-P.-Newman,17.0,LaSalle,Montréal,LaSalle,-73.61379655733215,45.4270096454564
+69,Lachine-Ouest,27.0,Lachine,Montréal,Lachine,-73.70541209936614,45.44178643176017
+59,Du College/Hodge,15.0,Saint-Laurent,Montréal,Saint-Laurent,-73.67360824912977,45.523472048672296
+36,Milton-Parc,21.0,Le Plateau-Mont-Royal,Montréal,Le Plateau-Mont-Royal,-73.57115042232812,45.536439001403274
+71,Pierrefonds-Ouest,31.0,Pierrefonds-Roxboro,Montréal,Pierrefonds-Roxboro,-73.8975588164073,45.46257418679893
+80,Montréal-Est,,,Montréal-Est,,,
+81,Westmount,,,Westmount,,,
+82,Hampstead,,,Hampstead,,,
+83,Côte-Saint-Luc,,,Côte-Saint-Luc,,,
+84,Montréal-Ouest,,,Montréal-Ouest,,,
+85,Dorval,,,Dorval,,,
+86,Pointe-Claire,,,Pointe-Claire,,,
+87,Beaconsfield,,,Beaconsfield,,,
+90,Kirkland,,,Kirkland,,,
+89,Dollard-Des Ormeaux,,,Dollard-Des Ormeaux,,,
+88,Baie-D'Urfé,,,Baie-D'Urfé,,,
+91,Sainte-Anne-de-Bellevue,,,Sainte-Anne-de-Bellevue,,,
+92,Senneville,,,Senneville,,,
+93,Mont-Royal,,,Mont-Royal,,,
+72,Pierrefonds-Est,31.0,Pierrefonds-Roxboro,Montréal,Pierrefonds-Roxboro,-73.8975588164073,45.46257418679893
+75,L'Île-Bizard–Sainte-Geneviève,32.0,L'Île-Bizard–Sainte-Geneviève,Montréal,L'Île-Bizard–Sainte-Geneviève,-73.89559931185681,45.4939054635629
+70,Vieux-Lachine - Saint-Pierre,27.0,Lachine,Montréal,Lachine,-73.70541209936614,45.44178643176017
+60A,Ouest,16.0,Montréal-Nord,Montréal,Montréal-Nord,-73.61800594607203,45.61606712199108
+60B,Centre-Nord,16.0,Montréal-Nord,Montréal,Montréal-Nord,-73.61800594607203,45.61606712199108

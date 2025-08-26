@@ -69,17 +69,23 @@ def convert_poverty_files():
     execute_poverty_creation()
 
 def associate_points_with_districts():
-    """Associate points with regions based on geographical data."""
-
-    # Load the CSV file with points
+    """
+    Load crime with points and compare which distrcict they belong to.
+    With that polygon on hand, we can calculate the centroid of each district.
+    Dataset crime: new "nom_arr" column
+    Dataset municipality: new "centroid_longidue" and "centroid_latitude" columns
+    """
     path_source1 = Path("data", "crime", "crime")
-    df = pd.read_csv(path_source1.get_source_path() + "/crime_montreal_cleaned.csv")
-    geometry = [Point(xy) for xy in zip(df['LONGITUDE'], df['LATITUDE'])]
-    points_gdf = gpd.GeoDataFrame(df, geometry=geometry, crs="EPSG:4326")
+    df_crime = pd.read_csv(path_source1.get_source_path() + "/crime_montreal_cleaned.csv")
+    geometry = [Point(xy) for xy in zip(df_crime['LONGITUDE'], df_crime['LATITUDE'])]
+    points_gdf = gpd.GeoDataFrame(df_crime, geometry=geometry, crs="EPSG:4326")
 
     # Load the GeoJSON file
-    path_source2 = Path("data","municipality", "crime")
+    path_source2 = Path("data","municipality", "municipality")
     geojson = path_source2.get_source_path() + "/municipality_polygon_map.geojson"
+    # Load municipality
+    df_municipality = pd.read_csv(path_source2.get_source_path() + "/municipality_montreal_cleaned.csv")
+
     gdf = gpd.read_file(geojson)
 
     # Perform spatial join to associate points with districts
@@ -90,6 +96,39 @@ def associate_points_with_districts():
     # Remove null values in the 'nom_arr' column
     crime_districts = crime_districts.dropna(subset=["nom_arr"])
 
+    # Calculate the centroid (average coordinate) of each polygon and add as new columns
+    # To get accurate centroids, re-project to a projected CRS (e.g., EPSG:2950 for Montreal)
+    # before calculating the centroid, and then re-project back to EPSG:4326 for output.
+    district_centroids_projected = district_gdf.to_crs(epsg=2950) # Project to a local projected CRS
+    district_centroids_projected['geometry_centroid'] = district_centroids_projected.geometry.centroid
+
+    # Convert the centroids back to EPSG:4326 (latitude/longitude)
+    district_centroids_latlon = district_centroids_projected.set_geometry('geometry_centroid', crs=2950)
+    district_centroids_latlon = district_centroids_latlon.to_crs(epsg=4326)
+
+    # Extract the longitude and latitude from the re-projected centroids
+    district_centroids_latlon['centroid_longitude'] = district_centroids_latlon.geometry.x
+    district_centroids_latlon['centroid_latitude'] = district_centroids_latlon.geometry.y
+
+    # Select relevent columns for merging
+    district_for_merge = district_centroids_latlon[['nom_arr']]
+
+    # Group by to get one row per district
+    centroids_for_merge = (
+        district_centroids_latlon
+        .groupby('nom_arr', as_index= False)[['centroid_longitude', 'centroid_latitude']]
+        .first()
+    )
+
+    # This ensures each crime record receive their district name matched
+    crime_districts = pd.merge(crime_districts, district_for_merge, on='nom_arr', how='left')
+    # This ensures each municipality record receive their district centroid matched
+    municipaly_center = pd.merge(df_municipality, centroids_for_merge, left_on='district_name', right_on= 'nom_arr', how='left')
+
     # Save the result to a new CSV file
-    path_destination = path_source1.get_destination_path() + "/crime_montreal_with_districts.csv"
-    pd.DataFrame(crime_districts).to_csv(path_destination, index=False)
+    path_destination_crime = path_source1.get_destination_path() + "/crime_montreal_district_cleaned.csv"
+    path_destination_municipality = path_source2.get_destination_path() + "/municipality_montreal_centered_cleaned.csv"
+
+    # Save results in dataframes
+    pd.DataFrame(crime_districts).to_csv(path_destination_crime, index=False)
+    pd.DataFrame(municipaly_center).to_csv(path_destination_municipality, index=False)
