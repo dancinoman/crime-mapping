@@ -110,9 +110,6 @@ def associate_points_with_districts():
     district_centroids_latlon['centroid_longitude'] = district_centroids_latlon.geometry.x
     district_centroids_latlon['centroid_latitude'] = district_centroids_latlon.geometry.y
 
-    # Select relevent columns for merging
-    district_for_merge = district_centroids_latlon[['nom_arr']]
-
     # Group by to get one row per district
     centroids_for_merge = (
         district_centroids_latlon
@@ -120,8 +117,6 @@ def associate_points_with_districts():
         .first()
     )
 
-    # This ensures each crime record receive their district name matched
-    crime_districts = pd.merge(crime_districts, district_for_merge, on='nom_arr', how='left')
     # This ensures each municipality record receive their district centroid matched
     municipaly_center = pd.merge(df_municipality, centroids_for_merge, left_on='district_name', right_on= 'nom_arr', how='left')
 
