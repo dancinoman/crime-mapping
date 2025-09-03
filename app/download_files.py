@@ -160,10 +160,9 @@ def download_file_from_url():
                     print("Credentials not available")
     download_file()
 
-"""
-def download_json():
 
-    S3_INPUT_FILE = 'data/municipality_polygon/municipality_polygon_map.geojson'
-    S3_FILE_LOCAL_TMP = "downloads/json-files/municipality_polygon_map.json"
+def download_coverage():
+
+    S3_INPUT_FILE = 'data/police_coverage/police_coverage_sector.csv'
+    S3_FILE_LOCAL_TMP = 'data/police_coverage/police_coverage_sector.csv'
     s3.download_file(S3_BUCKET_NAME, S3_INPUT_FILE, S3_FILE_LOCAL_TMP)
-"""

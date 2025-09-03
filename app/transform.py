@@ -3,6 +3,7 @@ import re
 import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point
+from shapely import wkt
 # Import custom modules
 from config import Path
 
@@ -68,6 +69,17 @@ def convert_poverty_files():
     # Execute the conversion process
     execute_poverty_creation()
 
+def fix_coverage_bad_closing():
+    path = Path('data','police_coverage','police_coverage')
+    df = pd.read_csv(path.get_source_path() + '/police_coverage_sector.csv')
+    # Identify the rows with bad closing parentheses
+    df["wkt"] = df["wkt"].apply(
+        lambda w: w + ")))" if isinstance(w, str) and not w.endswith("))") else w
+    )
+
+    df.to_csv(path.get_destination_path() + '/police_coverage_sector_cleaned.csv', index=False)
+
+
 def associate_points_with_districts():
     """
     Load crime with points and compare which distrcict they belong to.
@@ -75,10 +87,34 @@ def associate_points_with_districts():
     Dataset crime: new "nom_arr" column
     Dataset municipality: new "centroid_longidue" and "centroid_latitude" columns
     """
+    # Centralize polygon
+    def geocenter(id, points):
+        district_gdf = gdf.to_crs(points.crs)
+        joined_data = gpd.sjoin(points, district_gdf, how="inner", predicate="within")
+        centroids_projected = district_gdf.to_crs(epsg=2950)
+        centroids_projected['geometry_centroid'] = centroids_projected.geometry.centroid
+
+        # Convert the centroids back to EPSG:4326 (latitude/longitude)
+        centroids_latlon =centroids_projected.set_geometry('geometry_centroid', crs=2950)
+        centroids_latlon = centroids_latlon.to_crs(epsg=4326)
+
+        # Extract the longitude and latitude from the re-projected centroids
+        centroids_latlon['centroid_longitude'] = centroids_latlon.geometry.x
+        centroids_latlon['centroid_latitude'] = centroids_latlon.geometry.y
+
+        # Group by to get one row per district
+        centroids_for_merge = (
+            centroids_latlon
+            .groupby(id, as_index= False)[['centroid_longitude', 'centroid_latitude']]
+            .first()
+        )
+
+        return joined_data.drop(["geometry"], axis=1), centroids_for_merge
+
     path_source1 = Path("data", "crime", "crime")
     df_crime = pd.read_csv(path_source1.get_source_path() + "/crime_montreal_cleaned.csv")
-    geometry = [Point(xy) for xy in zip(df_crime['LONGITUDE'], df_crime['LATITUDE'])]
-    points_gdf = gpd.GeoDataFrame(df_crime, geometry=geometry, crs="EPSG:4326")
+    geometry_crime = [Point(xy) for xy in zip(df_crime['LONGITUDE'], df_crime['LATITUDE'])]
+    points_gdf_crime = gpd.GeoDataFrame(df_crime, geometry=geometry_crime, crs="EPSG:4326")
 
     # Load the GeoJSON file
     path_source2 = Path("data","municipality", "municipality")
@@ -86,44 +122,33 @@ def associate_points_with_districts():
     # Load municipality
     df_municipality = pd.read_csv(path_source2.get_source_path() + "/municipality_montreal_cleaned.csv")
 
+    # Load police coverage
+    path_source3 = Path("data","police_coverage", "police_coverage")
+    df_coverage = pd.read_csv(path_source3.get_source_path() + "/police_coverage_sector.csv")
+    for wkt in df_coverage['wkt']:
+        print(wkt[-5:])
+    geometry_coverage = df_coverage['wkt'].apply(wkt.loads)
+    points_gdf_coverage = gpd.GeoDataFrame(df_coverage, geometry=geometry_coverage, crs="EPSG:4326")
+
     gdf = gpd.read_file(geojson)
 
     # Perform spatial join to associate points with districts
-    district_gdf = gdf.to_crs(points_gdf.crs)
-    joined_data = gpd.sjoin(points_gdf, district_gdf, how="inner", predicate="within")
-    crime_districts = joined_data.drop(["geometry"], axis=1)
+    crime_districts, crime_to_merge = geocenter('nom_arr',points_gdf_crime)
+    coverage_wkt, coverage_to_merge = geocenter('pdq', points_gdf_coverage)
 
     # Remove null values in the 'nom_arr' column
     crime_districts = crime_districts.dropna(subset=["nom_arr"])
 
-    # Calculate the centroid (average coordinate) of each polygon and add as new columns
-    # To get accurate centroids, re-project to a projected CRS (e.g., EPSG:2950 for Montreal)
-    # before calculating the centroid, and then re-project back to EPSG:4326 for output.
-    district_centroids_projected = district_gdf.to_crs(epsg=2950) # Project to a local projected CRS
-    district_centroids_projected['geometry_centroid'] = district_centroids_projected.geometry.centroid
-
-    # Convert the centroids back to EPSG:4326 (latitude/longitude)
-    district_centroids_latlon = district_centroids_projected.set_geometry('geometry_centroid', crs=2950)
-    district_centroids_latlon = district_centroids_latlon.to_crs(epsg=4326)
-
-    # Extract the longitude and latitude from the re-projected centroids
-    district_centroids_latlon['centroid_longitude'] = district_centroids_latlon.geometry.x
-    district_centroids_latlon['centroid_latitude'] = district_centroids_latlon.geometry.y
-
-    # Group by to get one row per district
-    centroids_for_merge = (
-        district_centroids_latlon
-        .groupby('nom_arr', as_index= False)[['centroid_longitude', 'centroid_latitude']]
-        .first()
-    )
-
-    # This ensures each municipality record receive their district centroid matched
-    municipaly_center = pd.merge(df_municipality, centroids_for_merge, left_on='district_name', right_on= 'nom_arr', how='left')
+    # Ensures each municipality record receive their district centroid matched
+    municipaly_center = pd.merge(df_municipality, crime_to_merge, left_on='district_name', right_on= 'nom_arr', how='left')
+    coverage_center = pd.merge(df_coverage, coverage_to_merge, left_on='pdq', right_on='pdq', how='left')
 
     # Save the result to a new CSV file
     path_destination_crime = path_source1.get_destination_path() + "/crime_montreal_district_cleaned.csv"
     path_destination_municipality = path_source2.get_destination_path() + "/municipality_montreal_centered_cleaned.csv"
+    path_destination_coverage = path_source3.get_destination_path() + "/police_coverage_montreal_centered_cleaned.csv"
 
     # Save results in dataframes
     pd.DataFrame(crime_districts).to_csv(path_destination_crime, index=False)
     pd.DataFrame(municipaly_center).to_csv(path_destination_municipality, index=False)
+    pd.DataFrame(coverage_center).to_csv(path_destination_coverage, index=False)
