@@ -69,16 +69,12 @@ def convert_poverty_files():
     # Execute the conversion process
     execute_poverty_creation()
 
-def fix_coverage_bad_closing():
+def remove_bad_row():
     path = Path('data','police_coverage','police_coverage')
     df = pd.read_csv(path.get_source_path() + '/police_coverage_sector.csv')
-    # Identify the rows with bad closing parentheses
-    df["wkt"] = df["wkt"].apply(
-        lambda w: w + ")))" if isinstance(w, str) and not w.endswith("))") else w
-    )
-
+    # Remove the row that is truncated and not recoverable
+    df = df.drop(index=1)
     df.to_csv(path.get_destination_path() + '/police_coverage_sector_cleaned.csv', index=False)
-
 
 def associate_points_with_districts():
     """

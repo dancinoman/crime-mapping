@@ -16,7 +16,7 @@ if __name__ == "__main__":
     # ex.upload_csv_to_s3()
     #print("Uploaded CSV files to S3")
     #df.download_coverage()
-    #trans.fix_coverage_bad_closing()
+    trans.remove_bad_row()
     #print("Downloaded police coverage file from S3 and fixed bad closing")
     trans.associate_points_with_districts()
 
