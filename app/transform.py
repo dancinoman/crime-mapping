@@ -124,9 +124,8 @@ def associate_points_with_districts():
 
     # Load police coverage
     path_source3 = Path("data","police_coverage", "police_coverage")
-    df_coverage = pd.read_csv(path_source3.get_source_path() + "/police_coverage_sector.csv")
-    for wkt in df_coverage['wkt']:
-        print(wkt[-5:])
+    df_coverage = pd.read_csv(path_source3.get_source_path() + "/police_coverage_sector_cleaned.csv")
+
     geometry_coverage = df_coverage['wkt'].apply(wkt.loads)
     points_gdf_coverage = gpd.GeoDataFrame(df_coverage, geometry=geometry_coverage, crs="EPSG:4326")
 
